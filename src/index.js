@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import { TimeoutError } from "rxjs";
 
 function Square(props) {
   return (
@@ -16,7 +15,7 @@ class Board extends React.Component {
     return (
       <Square
         value={this.props.squares[i]}
-        onClick={() => this.props.handleClick(i)}
+        onClick={() => this.props.onClick(i)}
       />
     );
   }
@@ -74,7 +73,7 @@ class Game extends React.Component {
   render() {
     const history = this.state.history;
     const current = history[history.length - 1];
-    const winner = calculateWinner(current, squares);
+    const winner = calculateWinner(current.squares);
 
     let status;
     if (winner) {
